@@ -29,11 +29,13 @@
 5. Click "Launch Instance"
 
 6. Click "View Instances"
+
 ![Screenshot 2023-09-29 112745](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/901f1324-dad3-444e-a32c-7135ddc387d9)
 
 7. Refresh until status check for the instance shows "2/2 checks passed".
 
 8. In this project, we'll connect to the instance using SSH.
+
 ![Screenshot 2023-09-29 113635](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/a7b1ba14-3f6b-442e-b8b7-49dbdf985e9d)
 
 # Step 2: Install Jenkins on EC2 Instance
@@ -42,11 +44,11 @@
 
    Java is installed
 
-    ![Screenshot 2023-09-29 114800](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/aba6d392-8775-42b6-b3a7-6978e8704473)
+   ![Screenshot 2023-09-29 114800](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/aba6d392-8775-42b6-b3a7-6978e8704473)
 
    Jenkins is installed
 
-    ![Screenshot 2023-09-29 115155](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/bbf2125c-b106-4a7c-91fa-8fe3f1f0d3c2)
+   ![Screenshot 2023-09-29 115155](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/bbf2125c-b106-4a7c-91fa-8fe3f1f0d3c2)
 
 3. The Jenkins webserver is accessed from the browser using the public ip and the Jenkins port number 8080
 
@@ -54,15 +56,15 @@
 
 5. The Jenkins server password is retrieved using the command: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-![Screenshot 2023-09-29 115539](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/6fe46a2d-f125-473b-9a2d-e2aa88fd4a24)
+   ![Screenshot 2023-09-29 115539](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/6fe46a2d-f125-473b-9a2d-e2aa88fd4a24)
 
 5. Login to the Jenkins server
 
-![Screenshot 2023-09-29 115818](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/12a39fd8-aec4-474e-aa24-1bd785188111)
+  ![Screenshot 2023-09-29 115818](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/12a39fd8-aec4-474e-aa24-1bd785188111)
 
 6. Enter the relevant details and voila!! Jenkins is ready.
 
-![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
+  ![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
 
    NB: An SSH key is created to connect the Jenkins server and the Github repo and a webhook created.
 
@@ -84,7 +86,7 @@
    ![Screenshot 2023-09-29 164022](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/498a6287-4106-4b3c-b335-5f83515fde3c)
 
 
-8. Select "New Item", enter the name of the project, select Freestyle and press OK
+8. Select "New Item", enter the name of the project, select Freestyle and press OK.
   
 9. Enter the configuration details
 
@@ -119,11 +121,11 @@
 
     ls /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
 
-     ![Screenshot 2023-09-29 123356](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/0fc3f1d3-cdb6-4d93-b620-ae2e36acbec5)
+    ![Screenshot 2023-09-29 123356](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/0fc3f1d3-cdb6-4d93-b620-ae2e36acbec5)
 
 14. Check the README file and install the necessary dependencies on the EC2 instance.
 
-![Screenshot 2023-09-29 124323](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/30e77be5-4fd7-49d1-b17b-9d0ddecfc66b)
+   ![Screenshot 2023-09-29 124323](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/30e77be5-4fd7-49d1-b17b-9d0ddecfc66b)
 
 13. The app is running on port 8000.
 
@@ -135,21 +137,26 @@
 
 
 15. The app is accessed from the browser using the public ip and the port number 8000.
-![Screenshot 2023-09-29 125342](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/5d02de4c-6a7f-427b-9447-23708794bf57)
+
+   ![Screenshot 2023-09-29 125342](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/5d02de4c-6a7f-427b-9447-23708794bf57)
 
 # Step 3: Dockerize the application
 
 1. On the EC2 instance, install Docker.
+
    Follow the Docker installation instructions from the Docker Documentation to install Docker: :https://docs.docker.com/engine/install/ubuntu/
+
 ![Screenshot 2023-09-29 142131](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3313ed9a-215c-499b-a446-3179e044a41e)
 
-2. cd /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
+3. cd /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
+
 ![Screenshot 2023-09-29 142407](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/648c39f7-406f-4189-a67c-5d301e9ffe6e)
 
-3. Build the docker image of the app: docker build . -t todoapp
+4. Build the docker image of the app: docker build . -t todoapp
+
 ![Screenshot 2023-09-29 142540](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/1a7adc0a-1cf9-4545-abb0-50d9cb1d7051)
 
-4. Run the Docker container:  docker run -d --name todo -p 8000:8000 5fcf33067ddf
+5. Run the Docker container:  docker run -d --name todo -p 8000:8000 5fcf33067ddf
 
 ![Screenshot 2023-09-29 145717](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/05659b82-ea99-4962-8471-dc3bfca1b8d1)
 
@@ -177,12 +184,15 @@
 
 
 10. Select "Build now". The build will fail with the following output:
+
 ![Screenshot 2023-09-29 155143](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3543585b-0740-409f-9520-61b245e82045)
 
 Kill the existing container in the terminal.
+
 ![Screenshot 2023-09-29 155338](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7912e1a2-3cd5-458b-b9ca-c9fe0d80c24e)
 
 Run the build again. This will be successful.
+
 ![Screenshot 2023-09-29 155433](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/f31141b9-1fb5-43ae-bfaa-accda6d50d63)
 
 Edit the build steps to include removing the existing container.
