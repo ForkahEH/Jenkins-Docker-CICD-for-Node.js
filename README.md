@@ -38,7 +38,7 @@
 
 # Step 2: Install Jenkins on EC2 Instance
 
-1. The Jenkins installation instructions from the Jenkins Documentation are followed: https://www.jenkins.io/doc/book/installing/linux/
+1. Follow the Jenkins installation instructions from the Jenkins Documentation to install Jenkins: https://www.jenkins.io/doc/book/installing/linux/
 
    Java is installed
    ![Screenshot 2023-09-29 114800](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/aba6d392-8775-42b6-b3a7-6978e8704473)
@@ -58,18 +58,13 @@
 6. Enter the relevant details and voila!! Jenkins is ready.
 ![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
 
-7. Select "New Item", enter the name of the project, select Pipeline and press OK
+7. Select "New Item", enter the name of the project, select Freestyle and press OK
   
 8. Enter the configuration details
    Description: CICD pipeline using Jenkins for node.js application
    Project url : https://github.com/ForkahEH/node-todo-cicd.git
 
-9. Under pipeline script, select pipeline syntax.
-![Screenshot 2023-09-29 131106](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/c8aa5985-ff29-4014-a4df-7bfc3900a98c)
-
-10. On the pipeline syntax page, select checkout: Checkout from version control
-![Screenshot 2023-09-29 131239](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7c2175bc-6015-43df-b9e5-9dc05d6c1992)
-    Enter the repo url and select add Jenkins credentials.
+9. In Source Core Management, select add Jenkins credentials.
     
     Enter the Github username where the project is stored.
     ![Screenshot 2023-09-29 132650](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/77e4e0c1-6c70-4a72-83c0-bd95be68e0b9)
@@ -86,16 +81,11 @@
 
     Select "Add".
 
-    Select the Github credentials, scroll down and select "Generate Pipeline syntax".
+10. Select "Build Now"....and the repo is cloned from Github.
+![Screenshot 2023-09-29 151318](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/56e382fb-5d7b-4f63-9e5b-db03fb5aa5ea)
 
-    Copy the pipeline syntax and paste it in your pipleline script.
 
-11. Select "Save" and "Apply".
-
-12. Select "Build Now"....and the repo is cloned from Github.
-![Screenshot 2023-09-29 122848](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/94a1b665-ad91-4ea5-84d3-7a94ba30b0fb)
-
-13. Confirm the repo has been cloned on the EC2 instance.
+11. Confirm the repo has been cloned on the EC2 instance.
 
     ls /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
     ![Screenshot 2023-09-29 123356](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/0fc3f1d3-cdb6-4d93-b620-ae2e36acbec5)
@@ -112,4 +102,35 @@
 17. The app is accessed from the browser using the public ip and the port number 8000.
 ![Screenshot 2023-09-29 125342](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/5d02de4c-6a7f-427b-9447-23708794bf57)
 
-18. 
+# Step 3: Dockerize the application
+
+1. On the EC2 instance, install Docker.
+   Follow the Docker installation instructions from the Docker Documentation to install Docker: :https://docs.docker.com/engine/install/ubuntu/
+![Screenshot 2023-09-29 142131](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3313ed9a-215c-499b-a446-3179e044a41e)
+
+2. cd /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
+![Screenshot 2023-09-29 142407](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/648c39f7-406f-4189-a67c-5d301e9ffe6e)
+
+3. Build the docker image of the app: docker build . -t todoapp
+![Screenshot 2023-09-29 142540](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/1a7adc0a-1cf9-4545-abb0-50d9cb1d7051)
+
+4. Run the Docker container:  docker run -d --name todo -p 8000:8000 5fcf33067ddf
+![Screenshot 2023-09-29 145717](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/05659b82-ea99-4962-8471-dc3bfca1b8d1)
+![Screenshot 2023-09-29 150000](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/c58735d4-88cc-4e01-8ff6-5512610db485)
+
+5. Check if the app is assecible on the browser
+![Screenshot 2023-09-29 152134](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7d203cf4-84ac-4b90-baa3-4e1cac776994)
+
+6. Under Build steps, select execute shell and enter the docker commands used
+![Screenshot 2023-09-29 152051](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/bb45da4e-ab57-4c21-9550-60c8bfc4489e)
+
+7. Select "Build now". The build will fail with the following output
+![Screenshot 2023-09-29 155143](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3543585b-0740-409f-9520-61b245e82045)
+
+Kill the existing container in the terminal.
+![Screenshot 2023-09-29 155338](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7912e1a2-3cd5-458b-b9ca-c9fe0d80c24e)
+
+Run the build again. This will be successful.
+![Screenshot 2023-09-29 155433](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/f31141b9-1fb5-43ae-bfaa-accda6d50d63)
+
+9. 
