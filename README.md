@@ -22,7 +22,7 @@
 
    Rules: SSH, port 22 and Custom TCP, port 8080
 
-   SSH source: My IP, Custm TCP source: My IP
+   SSH source: Anywhere IPv4, Custm TCP source: My IP
 
    NB: The source, "My IP" is selected for added security.
    
@@ -58,17 +58,21 @@
 6. Enter the relevant details and voila!! Jenkins is ready.
 ![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
 
-NB: An SSH key is created to connect the Jenkins server and the Github repo.
+   NB: An SSH key is created to connect the Jenkins server and the Github repo and a webhook created.
 
-Run the following commands on the terminal: ssh-keygen
+   Run the following commands on the terminal: ssh-keygen
 
-sudo cat id_rsa.pub
+   sudo cat id_rsa.pub
 
-Copy the public key. Go to Github > Settings > SSH and GPG keys > New SSH key.
+   Copy the public key. Go to Github > Settings > SSH and GPG keys > New SSH key.
 
-Paste the public key and save.
+   Paste the public key and save.
 
-![Screenshot 2023-09-29 144810](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/ce4e47b6-f94e-49ad-bef4-bbca5a107145)
+   ![Screenshot 2023-09-29 144810](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/ce4e47b6-f94e-49ad-bef4-bbca5a107145)
+
+   Configure a webhook to allow automatic build of the project.
+
+   ![Screenshot 2023-09-29 164022](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/498a6287-4106-4b3c-b335-5f83515fde3c)
 
 
 8. Select "New Item", enter the name of the project, select Freestyle and press OK
@@ -162,4 +166,13 @@ Kill the existing container in the terminal.
 Run the build again. This will be successful.
 ![Screenshot 2023-09-29 155433](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/f31141b9-1fb5-43ae-bfaa-accda6d50d63)
 
-9. 
+Edit the build steps to include removing the existing container.
+
+![Screenshot 2023-09-29 165201](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/9032f2f1-924f-4e38-ba7c-010d9d4237e8)
+
+
+9. Since a webhook has been configured and all steps automated, when an update is made in the repo, it will automatically trigger a build. The whole pipeline will run automatically.
+
+![Screenshot 2023-09-29 164910](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/a30b6f95-8154-4be6-84fc-638393575adb)
+
+ 
