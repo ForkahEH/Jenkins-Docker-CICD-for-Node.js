@@ -22,7 +22,7 @@
 
    Rules: SSH, port 22 and Custom TCP, port 8080
 
-   SSH source: Anywhere IPv4, Custm TCP source: My IP
+   SSH source: My IP, Custm TCP source: My IP
 
    NB: The source, "My IP" is selected for added security.
    
