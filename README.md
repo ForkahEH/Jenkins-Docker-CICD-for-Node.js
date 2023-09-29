@@ -70,7 +70,10 @@
 
    ![Screenshot 2023-09-29 144810](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/ce4e47b6-f94e-49ad-bef4-bbca5a107145)
 
-   Configure a webhook to allow automatic build of the project.
+   Configure a webhook to allow automatic build of the project. This will fail because of the inbound rules of the Jenkins SG allowing only traffic from "My IP" via SSH and 
+   port 8080.
+
+   I had to allow all SSH and port 8080 traffic to configure the webhook.
 
    ![Screenshot 2023-09-29 164022](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/498a6287-4106-4b3c-b335-5f83515fde3c)
 
