@@ -59,22 +59,43 @@
 ![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
 
 7. Select "New Item", enter the name of the project, select Pipeline and press OK
-
-8. Configure a webhook to allow automatic build of the project
-  ![Screenshot 2023-09-29 122206](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/c5808446-830c-4cdb-b584-2d194ef61de6)
-
-
-9. Enter the configuration details
+  
+8. Enter the configuration details
    Description: CICD pipeline using Jenkins for node.js application
    Project url : https://github.com/ForkahEH/node-todo-cicd.git
 
-10. Enter the pipeline script
-![Screenshot 2023-09-29 122614](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/902891ee-e414-424d-a7dc-dc4b4fa3c70f)
+9. Under pipeline script, select pipeline syntax.
+![Screenshot 2023-09-29 131106](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/c8aa5985-ff29-4014-a4df-7bfc3900a98c)
 
-11. Select "Build Now"....and the repo is cloned from Github.
+10. On the pipeline syntax page, select checkout: Checkout from version control
+![Screenshot 2023-09-29 131239](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7c2175bc-6015-43df-b9e5-9dc05d6c1992)
+    Enter the repo url and select add Jenkins credentials.
+    
+    Enter the Github username where the project is stored.
+    ![Screenshot 2023-09-29 132650](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/77e4e0c1-6c70-4a72-83c0-bd95be68e0b9)
+
+    
+    In the password section, a github token is entered.
+    
+    To obtain the Github token, open the github account and select settings > Developer settings . Tokens(classic) > Generate new 
+    token > Generate new personal access token(classic).
+
+    Enter the relevant details and select "Generate new token".
+    
+    Copy the token and paste it in the password section.
+
+    Select "Add".
+
+    Select the Github credentials, scroll down and select "Generate Pipeline syntax".
+
+    Copy the pipeline syntax and paste it in your pipleline script.
+
+11. Select "Save" and "Apply".
+
+12. Select "Build Now"....and the repo is cloned from Github.
 ![Screenshot 2023-09-29 122848](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/94a1b665-ad91-4ea5-84d3-7a94ba30b0fb)
 
-12. Confirm the repo has been cloned on the EC2 instance.
+13. Confirm the repo has been cloned on the EC2 instance.
 
     ls /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
     ![Screenshot 2023-09-29 123356](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/0fc3f1d3-cdb6-4d93-b620-ae2e36acbec5)
