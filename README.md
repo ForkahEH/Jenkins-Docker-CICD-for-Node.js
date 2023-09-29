@@ -58,13 +58,26 @@
 6. Enter the relevant details and voila!! Jenkins is ready.
 ![Screenshot 2023-09-29 120029](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/068aa685-5950-4606-bdac-64e4e81507c9)
 
-7. Select "New Item", enter the name of the project, select Freestyle and press OK
+NB: An SSH key is created to connect the Jenkins server and the Github repo.
+
+Run the following commands on the terminal: ssh-keygen
+
+sudo cat id_rsa.pub
+
+Copy the public key. Go to Github > Settings > SSH and GPG keys > New SSH key.
+
+Paste the public key and save.
+
+![Screenshot 2023-09-29 144810](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/ce4e47b6-f94e-49ad-bef4-bbca5a107145)
+
+
+8. Select "New Item", enter the name of the project, select Freestyle and press OK
   
-8. Enter the configuration details
+9. Enter the configuration details
    Description: CICD pipeline using Jenkins for node.js application
    Project url : https://github.com/ForkahEH/node-todo-cicd.git
 
-9. In Source Core Management, select add Jenkins credentials.
+10. In Source Core Management, select add Jenkins credentials.
     
     Enter the Github username where the project is stored.
     ![Screenshot 2023-09-29 132650](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/77e4e0c1-6c70-4a72-83c0-bd95be68e0b9)
@@ -81,26 +94,26 @@
 
     Select "Add".
 
-10. Select "Build Now"....and the repo is cloned from Github.
+11. Select "Build Now"....and the repo is cloned from Github.
 ![Screenshot 2023-09-29 151318](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/56e382fb-5d7b-4f63-9e5b-db03fb5aa5ea)
 
 
-11. Confirm the repo has been cloned on the EC2 instance.
+12. Confirm the repo has been cloned on the EC2 instance.
 
     ls /var/lib/jenkins/workspace/Jenkins-Docker-CICD-for-Node.js
     ![Screenshot 2023-09-29 123356](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/0fc3f1d3-cdb6-4d93-b620-ae2e36acbec5)
 
-14. Check the readme file and install the necessary dependencies on the EC2 instance.
+13. Check the readme file and install the necessary dependencies on the EC2 instance.
 
 ![Screenshot 2023-09-29 124323](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/30e77be5-4fd7-49d1-b17b-9d0ddecfc66b)
 
-15. The app is running on port 8000.
+13. The app is running on port 8000.
     In order to access the app on the browser, the Jenkins SG security group settings inbound rules must be edited to allow traffic from port 8000.
     In this case, the source is "Everywhere" since the app would be accessed by people over the internet.
     ![Screenshot 2023-09-29 124819](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/b2b9dba9-cd86-4cbb-ac74-69c7931cde84)
 
 
-17. The app is accessed from the browser using the public ip and the port number 8000.
+14. The app is accessed from the browser using the public ip and the port number 8000.
 ![Screenshot 2023-09-29 125342](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/5d02de4c-6a7f-427b-9447-23708794bf57)
 
 # Step 3: Dockerize the application
@@ -128,6 +141,19 @@
 ![Screenshot 2023-09-29 152051](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/bb45da4e-ab57-4c21-9550-60c8bfc4489e)
 
 7. Select "Build now". The build will fail with the following output
+
+   ![image](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/6163fd69-8cfd-4a72-a4d5-d4d8243cca0b)
+
+8. Run the following in the terminal: sudo usermod -a -G root jenkins
+
+   sudo service jenkins restart
+
+   chmod 777 /var/run/docker.sock
+
+   Restart the terminal
+
+
+10. Select "Build now". The build will fail with the following output
 ![Screenshot 2023-09-29 155143](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3543585b-0740-409f-9520-61b245e82045)
 
 Kill the existing container in the terminal.
