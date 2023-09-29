@@ -131,6 +131,8 @@
 
      In order to access the app on the browser, the Jenkins SG security group settings inbound rules must be edited to allow traffic from port 8000.
 
+     ![image](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/d31e3f96-97fa-4171-bbe0-aa9d06248b33)
+
      In this case, the source is "Everywhere" since the app would be accessed by people over the internet.
 
     ![Screenshot 2023-09-29 124819](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/b2b9dba9-cd86-4cbb-ac74-69c7931cde84)
