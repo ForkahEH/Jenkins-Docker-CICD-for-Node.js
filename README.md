@@ -117,9 +117,11 @@
 
 4. Run the Docker container:  docker run -d --name todo -p 8000:8000 5fcf33067ddf
 ![Screenshot 2023-09-29 145717](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/05659b82-ea99-4962-8471-dc3bfca1b8d1)
+
 ![Screenshot 2023-09-29 150000](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/c58735d4-88cc-4e01-8ff6-5512610db485)
 
 5. Check if the app is assecible on the browser
+
 ![Screenshot 2023-09-29 152134](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/7d203cf4-84ac-4b90-baa3-4e1cac776994)
 
 6. Under Build steps, select execute shell and enter the docker commands used
