@@ -103,7 +103,7 @@
     
     In the password section, a github token is entered.
     
-    To obtain the Github token, open the github account and select settings > Developer settings . Tokens(classic) > Generate new 
+    To obtain the Github token, open the github account and select settings > Developer settings > Tokens(classic) > Generate new 
     token > Generate new personal access token(classic).
 
     Enter the relevant details and select "Generate new token".
@@ -144,7 +144,7 @@
 
 1. On the EC2 instance, install Docker.
 
-   Follow the Docker installation instructions from the Docker Documentation to install Docker: :https://docs.docker.com/engine/install/ubuntu/
+   Follow the Docker installation instructions from the Docker Documentation to install Docker: https://docs.docker.com/engine/install/ubuntu/
 
 ![Screenshot 2023-09-29 142131](https://github.com/ForkahEH/Jenkins-Docker-CICD-for-Node.js/assets/127892742/3313ed9a-215c-499b-a446-3179e044a41e)
 
